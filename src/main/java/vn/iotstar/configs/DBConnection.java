@@ -13,7 +13,7 @@ public class DBConnection {
 	private final String userID = "sa";
 	private final String password = "123456";
 
-	public Connection getConnection() {
+	public Connection getConnection() throws Exception{
 		Connection conn = null;
 
 		try {
@@ -29,6 +29,9 @@ public class DBConnection {
 			        + "\\" + instance + ";databaseName=" + dbName 
 			        + ";encrypt=false;trustServerCertificate=true";
 			}
+			
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
 
 			conn = DriverManager.getConnection(url, userID, password);
 
